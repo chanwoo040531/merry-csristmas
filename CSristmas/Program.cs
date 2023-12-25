@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 
 class Program
@@ -14,7 +15,7 @@ class Program
 
         List<ConsoleCharacter> consoleCharacterList = GetConsoleCharacterList(keywordList);
 
-        int[,] binaryArray = BinanaryImageConverter.ConvertToBinaryImage("");
+        int[,] binaryArray = BinanaryImageConverter.ConvertToBinaryImage("C:\\Users\\user\\Documents\\binary_transparent_img_75.png");
         int index = 0;
 
         Console.WriteLine("result: ");
@@ -74,44 +75,34 @@ class Program
         return keywordList;
     }
 
-    private static ConsoleColor GetColor(string keyword)
+    private static ConsoleColor GetColor(string keyword) => (keyword) switch
     {
-        ConsoleColor color = ConsoleColor.DarkGreen;
-        switch (keyword)
-        {
-            case "if":
-            case "for":
-            case "in":
-            case "foreach":
-            case "switch":
-            case "case":
-            case "break":
-            case "using":
-            case "class":
-            case "static":
-                color = ConsoleColor.Red;
-                break;
-            case "namespace":
-            case "{":
-            case "}":
-            case "=":
-                color = ConsoleColor.Yellow;
-                break;
-            case "string":
-            case "int":
-            case "long":
-            case "var":
-            case "void":
-            case "int[]":
-            case "int[,]":
-            case "char[]":
-            case "string[]":
-                color = ConsoleColor.White;
-                break;
-            default:
-                break;
-        }
+        "if" or
+        "for" or
+        "in" or
+        "foreach" or
+        "switch" or
+        "case" or
+        "break" or
+        "using" or
+        "class" or
+        "static" => ConsoleColor.Red,
 
-        return color;
-    }
+        "namespace" or
+        "{" or
+        "}" or
+        "=" => ConsoleColor.Yellow,
+
+        "string" or
+        "int" or
+        "long" or
+        "var" or
+        "void" or
+        "int[]" or
+        "int[,]" or
+        "char[]" or
+       "string[]" => ConsoleColor.White,
+
+        _ => ConsoleColor.DarkGreen,
+    };
 }
