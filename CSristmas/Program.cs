@@ -15,7 +15,7 @@ class Program
 
         List<ConsoleCharacter> consoleCharacterList = GetConsoleCharacterList(keywordList);
 
-        int[,] binaryArray = BinanaryImageConverter.ConvertToBinaryImage("C:\\Users\\user\\Documents\\binary_transparent_img_75.png");
+        int[,] binaryArray = BinanaryImageConverter.ConvertToBinaryImage("");
         int index = 0;
 
         Console.WriteLine("result: ");
